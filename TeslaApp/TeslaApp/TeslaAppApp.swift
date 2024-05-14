@@ -11,7 +11,7 @@ import SwiftUI
 struct TeslaAppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            UnlockScreen()
         }
     }
 }

@@ -8,17 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		6FC4C9F72BF2472400895712 /* TeslaAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC4C9F62BF2472400895712 /* TeslaAppApp.swift */; };
-		6FC4C9F92BF2472400895712 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC4C9F82BF2472400895712 /* ContentView.swift */; };
 		6FC4C9FB2BF2472600895712 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FC4C9FA2BF2472600895712 /* Assets.xcassets */; };
 		6FC4C9FE2BF2472600895712 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FC4C9FD2BF2472600895712 /* Preview Assets.xcassets */; };
+		6FC4CA532BF3400F00895712 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FC4CA522BF3400F00895712 /* Colors.xcassets */; };
+		6FC4CA552BF3408800895712 /* UnlockScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC4CA542BF3408800895712 /* UnlockScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6FC4C9F32BF2472400895712 /* TeslaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeslaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FC4C9F62BF2472400895712 /* TeslaAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeslaAppApp.swift; sourceTree = "<group>"; };
-		6FC4C9F82BF2472400895712 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6FC4C9FA2BF2472600895712 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6FC4C9FD2BF2472600895712 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		6FC4CA522BF3400F00895712 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		6FC4CA542BF3408800895712 /* UnlockScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,8 +54,9 @@
 			isa = PBXGroup;
 			children = (
 				6FC4C9F62BF2472400895712 /* TeslaAppApp.swift */,
-				6FC4C9F82BF2472400895712 /* ContentView.swift */,
+				6FC4CA542BF3408800895712 /* UnlockScreen.swift */,
 				6FC4C9FA2BF2472600895712 /* Assets.xcassets */,
+				6FC4CA522BF3400F00895712 /* Colors.xcassets */,
 				6FC4C9FC2BF2472600895712 /* Preview Content */,
 			);
 			path = TeslaApp;
@@ -125,6 +128,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FC4CA532BF3400F00895712 /* Colors.xcassets in Resources */,
 				6FC4C9FE2BF2472600895712 /* Preview Assets.xcassets in Resources */,
 				6FC4C9FB2BF2472600895712 /* Assets.xcassets in Resources */,
 			);
@@ -137,7 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6FC4C9F92BF2472400895712 /* ContentView.swift in Sources */,
+				6FC4CA552BF3408800895712 /* UnlockScreen.swift in Sources */,
 				6FC4C9F72BF2472400895712 /* TeslaAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
