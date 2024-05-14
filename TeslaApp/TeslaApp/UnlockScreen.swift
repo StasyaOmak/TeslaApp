@@ -7,46 +7,6 @@
 
 import SwiftUI
 
-struct NeumorphismUnSelected: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .shadow(color: .lightShadow, radius: 5, x: -5, y: -5)
-            .shadow(color: .darkShadow, radius: 5, x: 5, y: 5)
-    }
-}
-
-struct NeumorphismSelectedCircle: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .padding(.all, 10)
-            .background(Circle().fill(Color.background))
-            .neumorphismUnSelectedStyle()
-    }
-}
-
-struct NeumorphismSelected: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .shadow(color: .lightShadow, radius: 5, x: 5, y: 5)
-            .shadow(color: .darkShadow, radius: 5, x: -5, y: -5)
-    }
-}
-
-extension View {
-    func neumorphismUnSelectedStyle() -> some View {
-        modifier(NeumorphismUnSelected())
-    }
-    
-    func neumorphismSelectedStyle() -> some View {
-        modifier(NeumorphismSelected())
-    }
-    
-    func neumorphismUNSelectedCircle() -> some View {
-        modifier(NeumorphismSelectedCircle())
-    }
-}
-
-
 struct UnlockScreen: View {
     @State var isCarClose = false
     
@@ -61,23 +21,31 @@ struct UnlockScreen: View {
     }
     
     var body: some View {
-        backgroundStackView {
-            VStack {
-                Spacer()
-                HStack {
-                    Spacer()
-                    settingButton
+        if #available(iOS 16.0, *) {
+            NavigationStack {
+                backgroundStackView {
+                    VStack {
+                        Spacer()
+                        HStack {
+                            Spacer()
+                            settingButton
+                        }
+                        .padding(.trailing)
+                        greetingTitle
+                            .padding(.bottom, 150)
+                        carView
+                        closeCarControlView
+                        Spacer()
+                    }
+                    .padding(.bottom, 200)
                 }
-                .padding(.trailing)
-                greetingTitle
-                    .padding(.bottom, 150)
-                carView
-                closeCarControlView
-                Spacer()
             }
-            .padding(.bottom, 200)
+        } else {
+            // Fallback on earlier versions
         }
     }
+    
+    @State var isShowMainTeslaView = false
     
     var gradient: LinearGradient {
         LinearGradient(colors: [.topDradient, .botomGradient], startPoint: .bottom, endPoint: .top)
@@ -102,12 +70,16 @@ struct UnlockScreen: View {
         } label: {
             HStack {
                 Label(
-                    title: {Image(systemName: isCarClose ? "lock.open.fill" : "lock.fill")
+                    title: {if #available(iOS 16.0, *) {
+                        Image(systemName: isCarClose ? "lock.open.fill" : "lock.fill")
                             .renderingMode(.template)
                             .tint(gradient)
                             .neumorphismUNSelectedCircle()
                             .neumorphismSelectedStyle()
                             .padding(.leading, 10)
+                    } else {
+                        // Fallback on earlier versions
+                    }
                     },
                     icon: {
                         Text(isCarClose ? "Lock" : "Unlock")
@@ -139,19 +111,20 @@ struct UnlockScreen: View {
     }
     
     var settingButton: some View {
-        Button(action: {
-            
-        }, label: {
-            Image(systemName: "gearshape")
-                .renderingMode(.template)
-                .frame(height: 150)
-                .tint(.gray)
-                .neumorphismUNSelectedCircle()
-                .neumorphismUnSelectedStyle()
-        })
-        .position(x: UIScreen.main.bounds.width - 50, y: 50)
+                NavigationLink {
+                    MainTeslaView()
+                } label: {
+                    Image(systemName: "gearshape")
+                        .renderingMode(.template)
+                        .frame(height: 150)
+                        .tint(.gray)
+                        .neumorphismUNSelectedCircle()
+                        .neumorphismUnSelectedStyle()
+                }
+                .position(x: UIScreen.main.bounds.width - 50, y: 50)
+        }
     }
-}
+
 
 #Preview {
     UnlockScreen()

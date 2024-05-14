@@ -12,6 +12,10 @@
 		6FC4C9FE2BF2472600895712 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FC4C9FD2BF2472600895712 /* Preview Assets.xcassets */; };
 		6FC4CA532BF3400F00895712 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FC4CA522BF3400F00895712 /* Colors.xcassets */; };
 		6FC4CA552BF3408800895712 /* UnlockScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC4CA542BF3408800895712 /* UnlockScreen.swift */; };
+		6FC4CA572BF3634A00895712 /* MainTeslaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC4CA562BF3634A00895712 /* MainTeslaView.swift */; };
+		6FC4CA592BF3740B00895712 /* Neumorphism.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC4CA582BF3740B00895712 /* Neumorphism.swift */; };
+		6FC4CA5D2BF3874600895712 /* ClimateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC4CA5C2BF3874600895712 /* ClimateView.swift */; };
+		6FC4CA7D2BF3D7F200895712 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC4CA7C2BF3D7F200895712 /* SplashScreenView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +25,10 @@
 		6FC4C9FD2BF2472600895712 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6FC4CA522BF3400F00895712 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		6FC4CA542BF3408800895712 /* UnlockScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockScreen.swift; sourceTree = "<group>"; };
+		6FC4CA562BF3634A00895712 /* MainTeslaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTeslaView.swift; sourceTree = "<group>"; };
+		6FC4CA582BF3740B00895712 /* Neumorphism.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Neumorphism.swift; sourceTree = "<group>"; };
+		6FC4CA5C2BF3874600895712 /* ClimateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimateView.swift; sourceTree = "<group>"; };
+		6FC4CA7C2BF3D7F200895712 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +63,10 @@
 			children = (
 				6FC4C9F62BF2472400895712 /* TeslaAppApp.swift */,
 				6FC4CA542BF3408800895712 /* UnlockScreen.swift */,
+				6FC4CA562BF3634A00895712 /* MainTeslaView.swift */,
+				6FC4CA5C2BF3874600895712 /* ClimateView.swift */,
+				6FC4CA582BF3740B00895712 /* Neumorphism.swift */,
+				6FC4CA7C2BF3D7F200895712 /* SplashScreenView.swift */,
 				6FC4C9FA2BF2472600895712 /* Assets.xcassets */,
 				6FC4CA522BF3400F00895712 /* Colors.xcassets */,
 				6FC4C9FC2BF2472600895712 /* Preview Content */,
@@ -143,6 +155,10 @@
 			files = (
 				6FC4CA552BF3408800895712 /* UnlockScreen.swift in Sources */,
 				6FC4C9F72BF2472400895712 /* TeslaAppApp.swift in Sources */,
+				6FC4CA5D2BF3874600895712 /* ClimateView.swift in Sources */,
+				6FC4CA572BF3634A00895712 /* MainTeslaView.swift in Sources */,
+				6FC4CA7D2BF3D7F200895712 /* SplashScreenView.swift in Sources */,
+				6FC4CA592BF3740B00895712 /* Neumorphism.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +299,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -311,6 +328,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -11,7 +11,8 @@ import SwiftUI
 struct TeslaAppApp: App {
     var body: some Scene {
         WindowGroup {
-            UnlockScreen()
+//            UnlockScreen()
+            SplashScreenView()
         }
     }
 }
