@@ -9,6 +9,7 @@ import SwiftUI
 
 struct UnlockScreen: View {
     @State var isCarClose = false
+    @State private var showGreeting = false
     
     func backgroundStackView<Content: View>(content: () -> Content) -> some View {
         ZStack {
@@ -39,9 +40,13 @@ struct UnlockScreen: View {
                     }
                     .padding(.bottom, 200)
                 }
+                .onChange(of: isCarClose) { newValue in
+                    withAnimation {
+                        showGreeting = newValue
+                    }
+                }
             }
         } else {
-            // Fallback on earlier versions
         }
     }
     
@@ -59,7 +64,6 @@ struct UnlockScreen: View {
             .padding(.bottom, 40)
             .shadow(color: .black.opacity(0.6), radius: 15, x: 10, y: 10)
             .position(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2 - 300)
-
     }
     
     var closeCarControlView: some View {
@@ -70,16 +74,16 @@ struct UnlockScreen: View {
         } label: {
             HStack {
                 Label(
-                    title: {if #available(iOS 16.0, *) {
-                        Image(systemName: isCarClose ? "lock.open.fill" : "lock.fill")
-                            .renderingMode(.template)
-                            .tint(gradient)
-                            .neumorphismUNSelectedCircle()
-                            .neumorphismSelectedStyle()
-                            .padding(.leading, 10)
-                    } else {
-                        // Fallback on earlier versions
-                    }
+                    title: {
+                        if #available(iOS 16.0, *) {
+                            Image(systemName: isCarClose ? "lock.open.fill" : "lock.fill")
+                                .renderingMode(.template)
+                                .tint(gradient)
+                                .neumorphismUNSelectedCircle()
+                                .neumorphismSelectedStyle()
+                                .padding(.leading, 10)
+                        } else {
+                        }
                     },
                     icon: {
                         Text(isCarClose ? "Lock" : "Unlock")
@@ -93,37 +97,39 @@ struct UnlockScreen: View {
             .background(RoundedRectangle(cornerRadius: 50).fill(Color("background")))
             .neumorphismSelectedStyle()
         }
-      
         .position(x: UIScreen.main.bounds.width / 2, y: 150)
-
     }
     
     var greetingTitle: some View {
         VStack(spacing: 15) {
-            Text( isCarClose ? "Hi" : "")
-                .font(.system(size: 20))
-                .opacity(0.4)
-            Text(isCarClose ? "Welcome back" : "")
-                .fontWeight(.bold)
-                .font(.title)
+            if showGreeting {
+                Text("Hi")
+                    .font(.system(size: 20))
+                    .opacity(0.4)
+                    .transition(.opacity)
+                Text("Welcome back")
+                    .fontWeight(.bold)
+                    .font(.title)
+                    .transition(.opacity)
+            }
         }
         .position(x: UIScreen.main.bounds.width / 2, y: 100)
     }
     
     var settingButton: some View {
-                NavigationLink {
-                    MainTeslaView()
-                } label: {
-                    Image(systemName: "gearshape")
-                        .renderingMode(.template)
-                        .frame(height: 150)
-                        .tint(.gray)
-                        .neumorphismUNSelectedCircle()
-                        .neumorphismUnSelectedStyle()
-                }
-                .position(x: UIScreen.main.bounds.width - 50, y: 50)
+        NavigationLink {
+            MainTabView()
+        } label: {
+            Image(systemName: "gearshape")
+                .renderingMode(.template)
+                .frame(width: 50, height: 50)
+                .tint(.gray)
+                .neumorphismUNSelectedCircle()
+                .neumorphismUnSelectedStyle()
         }
+        .position(x: UIScreen.main.bounds.width - 70, y: 50)
     }
+}
 
 
 #Preview {

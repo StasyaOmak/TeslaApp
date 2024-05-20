@@ -22,6 +22,7 @@ var headerView: some View {
         Spacer()
     }
     .padding(.all, 25)
+    
 }
 
 
@@ -34,34 +35,42 @@ struct MainTeslaView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .edgesIgnoringSafeArea(.all)
             content()
-            if tagSelected == 2 {
-                       ClimateView()
-                           .frame(maxWidth: .infinity, maxHeight: .infinity)
-                           .background(Color.black.opacity(0.5))
-                           .edgesIgnoringSafeArea(.all)
-                   }
         }
     }
     var body: some View {
-        backgroundStackView {
-            VStack {
-                headerView
-                carView
-                controlPanelView
-                Spacer()
-                    .frame(height: 40)
-                if tagSelected == 1 {
-                    closeCarControlView
+        ZStack {
+            backgroundStackView {
+                VStack {
+                    headerView
+                    carView
+                    controlPanelView
+                        .padding(.bottom, 50)
+                        .frame(height: 40)
+                    if tagSelected == 1 {
+                        closeCarControlView
+                    }
+                    navigationView
+//                        .padding(.bottom, 50)
+
                 }
-                Spacer()
+                .padding(.bottom, 300)
             }
-        }
-    }
+            .navigationBarBackButtonHidden(true)
+      
+                        }
+                    }
     
     @Environment(\.presentationMode) var presentationMode
     @State private var isShowingMainTesla = false
     @State var isCarClose = false
     @State var tagSelected = 0
+    @State private var shouldNavigateToTabView = false
+    @State private var shouldNavigateToClimateView = false
+    @Environment(\.dismiss) private var dismiss
+    @State private var shouldNavigateToEnergyView = false
+    @State private var shoulNavigateToCharacteristicsView = false
+    
+    @State private var selectedTab = 0
     
     var carView: some View {
         Image(isCarClose ? "closeCar" : "car")
@@ -82,6 +91,7 @@ struct MainTeslaView: View {
                 Button {
                     withAnimation {
                         tagSelected = index
+                        navigateToViews()
                     }
                 } label: {
                     Image("\(index)")
@@ -112,10 +122,14 @@ struct MainTeslaView: View {
                     Text(isCarClose ? "Закрыть" : "Открыть")
                             .foregroundColor(.white)
                     }
-                    icon: { Image(systemName: isCarClose ? "lock.open.fill" : "lock.fill")
-                            .renderingMode(.template)
-                            .neumorphismUNSelectedCircle()
-                            .neumorphismSelectedStyle()
+            icon: { if #available(iOS 16.0, *) {
+                Image(systemName: isCarClose ? "lock.open.fill" : "lock.fill")
+                    .renderingMode(.template)
+                    .tint(gradient)
+                    .neumorphismUNSelectedCircle()
+                    .neumorphismSelectedStyle()
+            } else {
+            }
                     }
             }
             .padding()
@@ -123,6 +137,36 @@ struct MainTeslaView: View {
             .neumorphismSelectedStyle()
         }
         .frame(width: 300)
+    }
+    private func navigateToViews() {
+        switch tagSelected {
+            case 1:
+            closeCarControlView
+        case 2:
+            shouldNavigateToClimateView.toggle()
+        case 3:
+            shouldNavigateToEnergyView.toggle()
+        case 4:
+            shoulNavigateToCharacteristicsView.toggle()
+        default:
+            break
+        }
+    }
+    private var navigationView: some View {
+        VStack {
+            NavigationLink(
+                destination: ClimateView(),
+                isActive: $shouldNavigateToClimateView,
+                label: {})
+            NavigationLink(
+                destination: Text("Screen under development"),
+                isActive: $shouldNavigateToEnergyView,
+                label: {})
+            NavigationLink(
+                destination: Text("Screen under development"),
+                isActive: $shoulNavigateToCharacteristicsView,
+                label: {})
+        }
     }
 }
 
